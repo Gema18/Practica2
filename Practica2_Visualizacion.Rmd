@@ -176,6 +176,17 @@ grafico3 <- grafico3 + geom_point()
 grafico3
 ```
 
+- Almacenamos en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio1.pdf``.
+
+```{r Solucion ejercicio 1 apartado 6}
+pdf("Ejercicio1.pdf")
+grafico3 
+
+# ¡Tenemos que asegurarnos de cerrar el pdf! Para ello usamos el comando:
+dev.off()
+```
+
+
 
 ### **Ejercicio 2**
 
