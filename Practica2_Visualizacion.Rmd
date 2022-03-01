@@ -218,6 +218,17 @@ grafico_ej2_3
 
 ¿Con qué representación (color o forma) se observa mejor la información que introduce la variable ``RainToday``?
 
+Se ve mucho mejor la representación con diferentes colores en lugar de con diferentes formas.
+
+- Incluimos un título explicativo al gráfico de la figura anterior.
+
+```{r Solucion ejercicio 2 apartado 4}
+grafico_ej2_4 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am, color = RainToday)) + ggtitle("Relación entre la presión y la temperatura a las 9am")
+grafico_ej2_4 <- grafico_ej2_4 + geom_point()
+grafico_ej2_4
+```
+
+
 ### **Ejercicio 3**
 
 * Carga el fichero ``iris.tidy.Rdata`` utilizando lo aprendido en la práctica 1.
