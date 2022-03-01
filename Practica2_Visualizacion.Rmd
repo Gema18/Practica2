@@ -167,6 +167,15 @@ grafico2 <- grafico2 + geom_point()
 grafico2
 ```
 
+- Añadimos a ``grafico2`` una capa para añadir un título con **ggtitle()** y lo almacenamos en ``grafico3`.
+
+```{r Solucion ejercicio 1 apartado 5}
+grafico3 <- ggplot(ds, aes(x = MinTemp, y = MaxTemp, color = RainTomorrow)) + ggtitle("Relación entre temperaturas máximas y mínimas")
+
+grafico3 <- grafico3 + geom_point()
+grafico3
+```
+
 
 ### **Ejercicio 2**
 
