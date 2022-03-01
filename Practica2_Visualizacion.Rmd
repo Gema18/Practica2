@@ -455,6 +455,8 @@ ggsave(grafico_ejer43, file = "./figure/Ejercicio4.pdf")
 En un gráfico de línea podemos añadir también barras de error. Para ver de lo que estamos hablando cargamos el fichero ``ExperimentoEjemplo.Rdata``. Fíjate en cómo se calculan y añaden las barras de error. Del mismo modo, este ejemplo es interesante para ver otra forma de añadir títulos y etiquetas en los ejes mediante la función **labs()**. 
 ¿Podemos inferir qué hace el argumento **position_dodge(0.05)** dentro del **aes()** de la función **geom_errorbar()**?
 
+El argumento **position_dodge(0.05)** hace que los puntos se puedan representar de manera que se esquiven las superposiciones y colocar objetos uno al lado del otro con una distancia de 0.05 en este caso.
+
 ```{r}
 load("./data/ExperimentoEjemplo.Rdata")
 # Un gráfico simple
