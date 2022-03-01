@@ -192,9 +192,31 @@ ggsave(grafico3, file = "./figure/Ejercicio1.pdf")
 * Incluye un título explicativo al gráfico de la figura anterior.
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio2.pdf``.
 
-```{r Solucion ejercicio 2}
+**Solución:**
+- Utilizando ggplot haz un grafico de dispersión en el que representes las variables ``Temp9am`` y ``Pressure9am`` en los ejes $x$ e $y$ respectivamente.
 
+```{r Solucion ejercicio 2 apartado 1}
+grafico_ej2_1 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am))
+grafico_ej2_1
 ```
+
+- Modificamos el gráfico anterior para incluir información categórica proporcionada por la variable ``RainToday`` con la forma del punto.
+
+```{r Solucion ejercicio 2 apartado 2}
+grafico_ej2_2 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am, shape = RainToday))
+grafico_ej2_2 <- grafico_ej2_2 + geom_point()
+grafico_ej2_2
+```
+
+-  Modificamos el gráfico anterior para incluir información categórica proporcionada por la variable ``RainToday`` con el color del punto. 
+
+```{r Solucion ejercicio 2 apartado 3}
+grafico_ej2_3 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am, color = RainToday))
+grafico_ej2_3 <- grafico_ej2_3 + geom_point()
+grafico_ej2_3
+```
+
+¿Con qué representación (color o forma) se observa mejor la información que introduce la variable ``RainToday``?
 
 ### **Ejercicio 3**
 
