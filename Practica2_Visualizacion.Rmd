@@ -562,7 +562,7 @@ grafico_ej62
 ```
 
 Añade en el mismo gráfico una capa de etiquetas de título (Distribución de temperaturas máximas por año), eje $x$ (Año) y eje $y$ (Temperatura (ºC)).
-```{r Solucion ejercicio 6 apartado 3}
+```{r Solucion ejercicio 6 apartado 3 parte 2}
 grafico_ej62 <- grafico_ej62 + labs(title="Distribución de temperaturas máximas por año",x="Año", y = "Temperatura (ºC)")
 grafico_ej62
 ```
