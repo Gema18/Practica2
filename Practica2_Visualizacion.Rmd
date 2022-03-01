@@ -541,8 +541,42 @@ En esta sección vamos a utilizar **ggplot2** para representar distribuciones de
 * En el gráfico anterior elimina la leyenda y coloca los años en el eje $x$ a 45 grados de inclinación. Busca información en la red sobre cómo hacer esto.
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio6.pdf``.
 
-```{r Solucion ejercicio 6}
+**Solución:**
 
+- Carga el fichero ``weatherAUS_distributions.RData``.
+```{r Solucion ejercicio 6 apartado 1}
+load("data/weatherAUS_distributions.RData")
+```
+
+- Crea un gráfico en el que estén los boxplots de la variable ``MinTemp`` para cada uno de los años presentes en la variable ``Year`` del dataset.
+
+```{r Solucion ejercicio 6 apartado 2}
+grafico_ej6 <- ggplot(ds, aes(x = Year, y = MinTemp)) + geom_boxplot()
+grafico_ej6
+```
+- Crea un gráfico en el que estén los gráficos de violín de la variable ``MaxTemp`` para  cada uno de los años presentes en la variable ``Year`` del dataset.  
+
+```{r Solucion ejercicio 6 apartado 3}
+grafico_ej62 <- ggplot(ds, aes(x = Year, y = MaxTemp, fill = Year)) + geom_violin()
+grafico_ej62
+```
+
+Añade en el mismo gráfico una capa de etiquetas de título (Distribución de temperaturas máximas por año), eje $x$ (Año) y eje $y$ (Temperatura (ºC)).
+```{r Solucion ejercicio 6 apartado 3}
+grafico_ej62 <- grafico_ej62 + labs(title="Distribución de temperaturas máximas por año",x="Año", y = "Temperatura (ºC)")
+grafico_ej62
+```
+
+- En el gráfico anterior elimina la leyenda y coloca los años en el eje $x$ a 45 grados de inclinación. Busca información en la red sobre cómo hacer esto.
+
+```{r Solucion ejercicio 6 apartado 4}
+grafico_ej62 <- grafico_ej62 + theme(legend.position = 'none', axis.text.x = element_text(angle = 45)) 
+grafico_ej62
+```
+
+- Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio6.pdf``.
+```{r Solucion ejercicio 6 apartado 5}
+ggsave(grafico_ej62, file = "./figure/Ejercicio6.pdf")
 ```
 
 ## Histogramas con **ggplot2**
