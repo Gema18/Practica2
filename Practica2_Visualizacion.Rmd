@@ -398,9 +398,57 @@ ggplot(data=Dosis.Medicina2, aes(x=Dosis, y=Efectividad, group=Complemento)) +
 * Añade el siguiente título al gráfico *"Ventas mensuales de diferentes compañías tecnológicas"*.
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio4.pdf``.
 
-```{r Solucion ejercicio 4}
-
+**Solución:**
+- Cargamos el fichero ``Ejercicio4_Data.Rdata``. 
+```{r Solucion ejercicio 4 apartado 1 parte 1}
+load("data/Ejercicio4_Data.Rdata")
 ```
+
+Examinamos las variables que tiene dicho dataset.
+
+```{r Solucion ejercicio 4 apartado 1 parte 2}
+str(DatosEjer4)
+```
+Vemos que contiene 3 variables: Fecha, Fabricante y Ventas
+
+- Representamos un gráfico de puntos, en el que se muestra la fecha en el eje $x$ y las ventas en el eje $y$. Queremos que los datos de cada fabricante sean de un color distinto. 
+
+```{r Solucion ejercicio 4 apartado 2}
+grafico_ejer4 <- ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, color = Fabricante)) + geom_point()
+grafico_ejer4
+```
+¿Es este gráfico valido para evaluar la evolución de las ventas de cada fabricante?
+
+Este gráfico no muestra claramente la evolución de las ventas, se ven muchos puntos de dos colores diferentes pero no claramente que representan, por lo tanto, no es un gráfico válido.
+
+- Representamos un gráfico como el anterior en el que se muestre la línea que une los puntos que antes has representado.
+
+```{r Solucion ejercicio 4 apartado 3}
+grafico_ejer42 <- grafico_ejer4 + geom_line()
+grafico_ejer42
+```
+
+- Modificamos el gráfico anterior para que la tendencia de cada fabricante este trazada con un tipo de línea diferente.
+
+```{r Solucion ejercicio 4 apartado 4}
+# Para ello añadimos el grupo Fabricante dentro del ggplot y definimos un nuevo aes dentro de geom_line
+grafico_ejer42 <-  ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, color = Fabricante, group=Fabricante)) + geom_point() + geom_line(aes(linetype = Fabricante))
+grafico_ejer42
+```
+
+- Añadimos el siguiente título al gráfico *"Ventas mensuales de diferentes compañías tecnológicas"*.
+
+```{r Solucion ejercicio 4 apartado 5}
+grafico_ejer43 <- grafico_ejer42 + ggtitle("Ventas mensuales de diferentes compañías tecnológicas")
+grafico_ejer43
+```
+
+- Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio4.pdf``.
+
+```{r Solucion ejercicio 4 apartado 6}
+ggsave(grafico_ejer43, file = "./figure/Ejercicio4.pdf")
+```
+
 
 ## Barras de error con **ggplot2**
 
