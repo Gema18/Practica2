@@ -228,6 +228,12 @@ grafico_ej2_4 <- grafico_ej2_4 + geom_point()
 grafico_ej2_4
 ```
 
+- Almacenamos en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio2.pdf`.
+
+```{r Solucion ejercicio 2 apartado 5}
+ggsave(grafico_ej2_4, file = "./figure/Ejercicio2.pdf")
+```
+
 
 ### **Ejercicio 3**
 
