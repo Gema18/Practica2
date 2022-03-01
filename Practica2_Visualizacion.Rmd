@@ -138,8 +138,15 @@ p2
 
 ```{r Solucion ejercicio 1 apartado 1}
 load("data/weatherAUS.RData")
-
 ```
+
+- Creamos un objeto ggplot denominado ``grafico1`` en el que esté definido el conjunto de datos ``ds`` alojado en el fichero ``weatherAUS.RData`` y un *aesthetics* en el que en el eje $x$ esté definida la variable ``MinTemp`` y en el eje $y$ esté definida la variable ``MaxTemp``.
+
+```{r Solucion ejercicio 1 apartado 2}
+grafico1 <- ggplot(ds, aes(x = MinTemp, y = MaxTemp))
+grafico1
+```
+
 
 ### **Ejercicio 2**
 
