@@ -489,9 +489,45 @@ Añadir barras de error a un gráfico de línea.
 * Crea otro gráfico, como el anterior (**idéntico**), pero en este caso no puedes incluir el tipo de línea y el tipo de punto en el aes() de la capa ggplot. Además queremos que la paleta de colores sea en tonos de rojos.
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio5.pdf``.
 
-```{r Solucion ejercicio 5}
 
+**Solución:**
+- Cargamos el fichero ``Experimento.Rdata``.
+```{r Solucion ejercicio 5 apartado 1 parte 1}
+load("data/Experimento.Rdata")
 ```
+
+Examina las variables que tiene dicho dataset.
+```{r Solucion ejercicio 5 apartado 1 parte 2}
+str(Experimento)
+```
+Vemos que contiene 4 variables: Complemento, Dosis, Altura y Error_Altura
+
+- Representamos un gráfico de puntos, en la que se muestre la ``Dosis`` en el eje $x$ y la ``Altura`` en el eje $y$. Queremos que los datos de cada ``Complemento`` se represente en una línea diferente con diferentes trazos. 
+```{r Solucion ejercicio 5 apartado 2}
+grafico_ej5 <- ggplot(Experimento, aes(x = Dosis, y = Altura, linetype = Complemento, shape = Complemento)) + geom_point() + geom_line()
+grafico_ej5
+```
+
+- Creamos otro gráfico a partir de añadir al gráfico anterior barras de error a cada punto. El error viene dado por la variable ``Error_Altura``.
+
+```{r Solucion ejercicio 5 apartado 3}
+grafico_ej52 <- grafico_ej5 + geom_errorbar(aes(ymin=Altura-Error_Altura, ymax=Altura+Error_Altura), width=0.1, position=position_dodge(0.05)) 
+grafico_ej52
+```
+- Creamos otro gráfico, idéntico al anterior, pero en este caso no puedes incluir el tipo de línea y el tipo de punto en el aes() de la capa ggplot. Además queremos que la paleta de colores sea en tonos de rojos.
+
+```{r Solucion ejercicio 5 apartado 4}
+grafico_ej53 <- ggplot(Experimento, aes(x = Dosis, y = Altura, group = Complemento, color = Complemento)) + geom_point(aes(shape = Complemento)) + geom_line(aes(linetype = Complemento)) + geom_errorbar(aes(ymin=Altura-Error_Altura, ymax=Altura+Error_Altura, linetype = Complemento), width=0.1, position=position_dodge(0.05)) + theme_classic() + scale_color_brewer(palette="Reds")
+grafico_ej53
+```
+
+- Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio5.pdf``.
+
+```{r Solucion ejercicio 5 apartado 6}
+ggsave(grafico_ej53, file = "./figure/Ejercicio5.pdf")
+```
+
+
 
 ## Gráficos de boxplot con **ggplot2**
 
