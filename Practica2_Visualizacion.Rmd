@@ -147,6 +147,13 @@ grafico1 <- ggplot(ds, aes(x = MinTemp, y = MaxTemp))
 grafico1
 ```
 
+- Añadimos una capa que defina el objeto geométrico necesario para  construir un gráfico de dispersión de las variables ``MinTemp`` y ``MaxTemp``.
+
+```{r Solucion ejercicio 1 apartado 3}
+grafico1 <- grafico1 +geom_point()
+grafico1
+```
+
 
 ### **Ejercicio 2**
 
