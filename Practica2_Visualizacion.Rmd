@@ -246,9 +246,87 @@ ggsave(grafico_ej2_4, file = "./figure/Ejercicio2.pdf")
 * Cambia ahora la capa **geom_point()** del gráfico anterior por la capa  **geom_jitter()**. ¿Qué diferencia observas?
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio3.pdf``.
 
-```{r Solucion ejercicio 3}
-
+**Solución:**
+- Cargamos el fichero ``iris.tidy.Rdata`` utilizando lo aprendido en la práctica 1.
+```{r Solucion ejercicio 3 apartado 1}
+load("data/iris_tidy.RData")
 ```
+
+- Utilizamos la función **str()** para ver qué variables contiene el dataset.
+```{r Solucion ejercicio 3 apartado 2}
+str(iris.tidy)
+```
+Vemos que contiene 4 variables: Species, Part, Measure y Value
+
+- Creamos un objeto ggplot denominado ``iris.grafico1`` en el que esté definido el conjunto de datos ``iris.tidy`` alojado en el fichero ``iris.tidy.RData`` y un *aesthetics* en el que en el eje $x$ esté definida la variable ``Species`` y en el eje $y$ esté definida la variable ``Value``.
+
+```{r Solucion ejercicio 3 apartado 3}
+iris.grafico1 <- ggplot(iris.tidy, aes(x = Species, y = Value))
+iris.grafico1
+```
+
+- Añadimos una capa que defina el objeto geométrico necesario para  construir un gráfico de dispersión de las variables ``Species`` y ``Value``.
+
+```{r Solucion ejercicio 3 apartado 4}
+iris.grafico1 <- iris.grafico1 + geom_point()
+iris.grafico1
+```
+
+- Modificamos el *aesthetics* de ``iris.grafico1`` para visualizar  la variable categórica `` Part`` y almacénalo en ``iris.grafico2``.
+
+```{r Solucion ejercicio 3 apartado 5 parte 1}
+iris.grafico2 <- ggplot(iris.tidy, aes(x = Species, y = Value, color = Part))
+```
+
+A partir del objeto ``iris.grafico2``, representamos un gráfico de dispersión en el que se muestren los puntos dados por las variables
+
+```{r Solucion ejercicio 3 apartado 5 parte 2}
+iris.grafico2 <- iris.grafico2 + geom_point()
+iris.grafico2
+```
+
+- Incluimos la información de la variable ``Measure`` haciendo dos gráficos de dispersión (dispuestos en filas) con **facet_grid()** como en el apartado de introducción para los dos valores que toma la variable ``Measure``. 
+
+```{r Solucion ejercicio 3 apartado 6 parte 1}
+iris.grafico31<-ggplot(iris.tidy, aes(x = Species, y = Value, color = Part))+geom_point() + facet_grid(Measure~. )
+iris.grafico31
+```
+
+Cambiamos la disposición de los gráficos para que sea en columnas 
+
+```{r Solucion ejercicio 3 apartado 6 parte 2}
+iris.grafico32<-ggplot(iris.tidy, aes(x = Species, y = Value, color = Part))+ geom_point() + facet_grid(.~Measure )
+iris.grafico32
+```
+
+
+¿Qué disposición, en filas o en columnas, permite comparar mejor los valores de las dos variables?
+
+La disposición en columnas se ve más clara para comprar los valores de las dos variables.
+
+- Cambiamos ahora la capa **geom_point()** del gráfico anterior por la capa  **geom_jitter()**. ¿Qué diferencia observas?
+
+```{r Solucion ejercicio 3 apartado 7}
+iris.grafico44 <- iris.grafico2 + geom_jitter()
+iris.grafico44
+
+iris.grafico4 <-ggplot(iris.tidy, aes(x = Species, y = Value, color = Part))+ geom_jitter() + facet_grid(.~Measure )
+iris.grafico4
+```
+
+¿Qué diferencia observas?
+
+Con frecuencia hacemos representaciones gráficas en que aparecen muchos datos que se solapan unos sobre otros, lo que no permite visualizar y apreciar la cantidad de datos que se están representando. Podemos mejorar la representación con la opción geom_jitter
+
+En nuestro caso vemos que los valores son desplazados levemente de posición y no están en una linea recta como anteriormente, de manera que el gráfico parece más real y así vemos mejor la distribución.
+
+- Almacenamos en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio3.pdf``.
+
+
+```{r Solucion ejercicio 3 apartado 8}
+ggsave(iris.grafico4, file = "./figure/Ejercicio3.pdf")
+```
+
 
 ## Gráficos de línea con **ggplot2**
 
