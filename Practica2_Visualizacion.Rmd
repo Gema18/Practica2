@@ -154,6 +154,19 @@ grafico1 <- grafico1 +geom_point()
 grafico1
 ```
 
+- Generamos el mismo gráfico y lo almacenamos en ``grafico2`` pero definimos la variable categórica ``RainTomorrow`` como el color. 
+
+```{r Solucion ejercicio 1 apartado 4}
+grafico2 <- ggplot(ds, aes(x = MinTemp, y = MaxTemp, color = RainTomorrow))
+```
+
+A partir del objeto ``grafico2``, representamos un gráfico de dispersión en el que se muestren los puntos con el color del punto correspondiente a la variable ``RainTomorrow``.
+
+```{r Solucion ejercicio 1 apartado 4 parte 2}
+grafico2 <- grafico2 + geom_point()
+grafico2
+```
+
 
 ### **Ejercicio 2**
 
